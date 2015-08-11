@@ -18,8 +18,9 @@ from scripts import oldid_ga, pui, scotus
 path = os.path.expanduser('~/logs/scheduler.log')
 handler = TimedRotatingFileHandler(path, when='W0', backupCount=20, utc=True)
 handler.setLevel(logging.DEBUG)
-handler.setFormatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger = logging.getLogger('scheduler')
+logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
